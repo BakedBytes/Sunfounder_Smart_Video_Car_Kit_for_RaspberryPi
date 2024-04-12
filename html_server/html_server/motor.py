@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import RPi.GPIO as GPIO
-import Sunfounder_PWM_Servo_Driver.Servo_init as pwm
+from .Sunfounder_PWM_Servo_Driver import Servo_init as pwm
 import time    # Import necessary modules
 
 # ===========================================================================
@@ -12,7 +12,7 @@ Motor0_B = 12  # pin12
 Motor1_A = 13  # pin13
 Motor1_B = 15  # pin15
 
-FILE_CONFIG = "/home/pi/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server/config"
+FILE_CONFIG = "/home/aka/Documents/source/server/config"
 
 # ===========================================================================
 # Set channel 4 and 5 of the servo driver IC to generate PWM, thus 
@@ -31,7 +31,7 @@ p = pwm.init()
 # ===========================================================================
 def setSpeed(speed):
 	speed *= 40
-	print 'speed is: ', speed
+	print ('speed is: ', speed)
 	p.setPWM(EN_M0, 0, speed)
 	p.setPWM(EN_M1, 0, speed)
 
@@ -73,7 +73,7 @@ def motor0(x):
 		GPIO.output(Motor0_A, GPIO.HIGH)
 		GPIO.output(Motor0_B, GPIO.LOW)
 	else:
-		print 'Config Error'
+		print ('Config Error')
 
 def motor1(x):
 	if x == 'True':
@@ -117,11 +117,11 @@ def ctrl(status, direction=1):
 		elif direction == -1:  # Backward
 			backward()
 		else:
-			print 'Argument error! direction must be 1 or -1.'
+			print('Argument error! direction must be 1 or -1.')
 	elif status == 0: # Stop
 		stop()
 	else:
-		print 'Argument error! status must be 0 or 1.'
+		print ('Argument error! status must be 0 or 1.')
 
 def test():
 	while True:

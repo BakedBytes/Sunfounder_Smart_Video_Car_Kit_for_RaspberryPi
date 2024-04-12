@@ -1,13 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-import video_dir
-import car_dir
-import motor
+from . import video_dir, car_dir, motor
+# import car_dir
+# import motor
 import os
 
 
 # Run camera
-LD_LIBRARY_PATH = "/home/pi/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/mjpg-streamer/mjpg-streamer/"
+LD_LIBRARY_PATH = "/home/aka/Documents/source/mjpg-streamer/mjpg-streamer/"
 
 MJPG_STREAMER_PATH = "mjpg_streamer"
 MJPG_STREAMER_PATH = LD_LIBRARY_PATH + MJPG_STREAMER_PATH
@@ -26,7 +26,7 @@ video_dir.home_x_y()
 car_dir.home()
 
 # Read config file
-FILE_CONFIG = "/home/pi/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/server/config"
+FILE_CONFIG = "/home/aka/Documents/source/server/config"
 offset = "0"
 offset_x = "0"
 offset_y = "0"
