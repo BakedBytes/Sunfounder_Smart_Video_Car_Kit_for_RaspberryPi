@@ -14,33 +14,33 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 # from django.conf.urls import url
-from django.urls import include, re_path, path
+from django.urls import path
 from django.contrib import admin
 from . import views
 
 urlpatterns = [
     path(r'admin/', admin.site.urls),
-    path(r'motor/forward', views.motor_forward),
-    path(r'motor/backward', views.motor_backward),
-    path(r'motor/stop', views.motor_stop),
-    path(r'camera/increase/y', views.camera_increase_y),
-    path(r'camera/decrease/y', views.camera_decrease_y),
-    path(r'camera/increase/x', views.camera_increase_x),
-    path(r'camera/decrease/x', views.camera_decrease_x),
-    path(r'camera/home', views.camera_home),
-    path(r'motor/set/speed/(\d{1,3})', views.motor_set_speed),
-    path(r'turning/(\d{1,3})', views.turning),
-    path(r'calibrate/getconfig', views.calibrate_get_config),
+    path(r'motor/forward/', views.motor_forward),
+    path(r'motor/backward/', views.motor_backward),
+    path(r'motor/stop/', views.motor_stop),
+    path(r'camera/increase/y/', views.camera_increase_y),
+    path(r'camera/decrease/y/', views.camera_decrease_y),
+    path(r'camera/increase/x/', views.camera_increase_x),
+    path(r'camera/decrease/x/', views.camera_decrease_x),
+    path(r'camera/home/', views.camera_home),
+    path(r'motor/set/speed/<int:speed>/', views.motor_set_speed),
+    path(r'turning/<int:angle>/', views.turning),
+    path(r'calibrate/getconfig/', views.calibrate_get_config),
     path(r'runmode', views.run_mode),
-    path(r'calibrationmode', views.calibration_mode),
-    path(r'calibrate/turning/(.)/(\d{1,3})', views.calibrate_turning),
-    path(r'calibrate/motor/run', views.calibrate_motor_run),
-    path(r'calibrate/motor/stop', views.calibrate_motor_stop),
-    path(r'calibrate/motor/left/reverse', views.calibrate_motor_left_reverse),
-    path(r'calibrate/motor/right/reverse', views.calibrate_motor_right_reverse),
-    path(r'calibrate/confirm', views.calibrate_confirm),
-    path(r'calibrate/pan/(.)/(\d{1,3})', views.calibrate_pan),
-    path(r'calibrate/tile/(.)/(\d{1,3})', views.calibrate_tile),
-    path(r'test/(.)/(\d{0,3})', views.test),
+    path(r'calibrationmode/', views.calibration_mode),
+    path(r'calibrate/turning/<str:direction>/<int:in_offset>/', views.calibrate_turning),
+    path(r'calibrate/motor/run/', views.calibrate_motor_run),
+    path(r'calibrate/motor/stop/', views.calibrate_motor_stop),
+    path(r'calibrate/motor/left/reverse/', views.calibrate_motor_left_reverse),
+    path(r'calibrate/motor/right/reverse/', views.calibrate_motor_right_reverse),
+    path(r'calibrate/confirm/', views.calibrate_confirm),
+    path(r'calibrate/pan/<str:direction>/<int:in_offset_x>/', views.calibrate_pan),
+    path(r'calibrate/tile/<str:direction>/<int:in_offset_y>/', views.calibrate_tile),
+    path(r'test/<str:direction>/<int:text>/', views.test),
     path(r'client/', views.client),
 ]
